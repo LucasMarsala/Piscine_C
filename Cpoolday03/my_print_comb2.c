@@ -45,7 +45,7 @@ int my_print_comb2(void)
   return (0);
 }
 
-int main()
+int main(void)
 {
   my_print_comb2();
   return (0);

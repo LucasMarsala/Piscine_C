@@ -12,7 +12,7 @@ int my_print_alpha(void)
   return (0);
 }
 
-int main()
+int main(void)
 {
   my_print_alpha();
   return (0);

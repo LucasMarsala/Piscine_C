@@ -1,32 +1,53 @@
 #include <unistd.h>
+#include <stdio.h>
 
 void my_putchar(char c)
 {
   write(1, &c, 1);
 }
 
-void display_characters(char a, char b, char c)
+// void display_characters(int n)
+// {
+//     my_putchar((n + '0'));
+//     my_putchar(',');
+//     my_putchar(' ');
+// }
+
+
+void function(int n)
 {
-  if (a == '7' && b == '8' && c == '9') {
-    my_putchar(a);
-    my_putchar(b);
-    my_putchar(c);
-  } else {
-    my_putchar(a);
-    my_putchar(b);
-    my_putchar(c);
-    my_putchar(',');
-    my_putchar(' ');
+  printf("%d\n", n);
+  char nbrs[n + 1];
+
+  nbrs[n] = '\0';
+  for (int i = 0; nbrs[i] != '\0'; ++i) {
+    nbrs[i] = (i + '0');
+    printf("%d\n", i);
+    my_putchar(nbrs[i]);
   }
+  printf("%s\n", nbrs);
 }
 
 int my_print_combn(int n)
 {
+  if (n == 0 || n > 10)
+    return (1);
+  else if (n == 1)
+    for (int i = 0; i <= 9; ++i)
+      my_putchar((i + '0'));
+  else
+    function(n);
   return (0);
 }
 
-int main()
+int main(void)
 {
+  my_print_combn(0);
+  my_putchar('\n');
+  my_print_combn(1);
+  my_putchar('\n');
   my_print_combn(3);
+  my_putchar('\n');
+  my_print_combn(12);
   return (0);
 }
