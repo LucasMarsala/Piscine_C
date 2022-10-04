@@ -8,9 +8,9 @@ void my_swap(char *a, char *b)
   *a ^= *b;
 }
 
-int my_strlen(char const *str)
+size_t my_strlen(char const *str)
 {
-  int i = 0;
+  size_t i = 0;
 
   for (; str[i] != '\0'; ++i);
   return (i);
@@ -18,10 +18,10 @@ int my_strlen(char const *str)
 
 char *my_revstr(char *str)
 {
-  int length = my_strlen(str) - 1;
-  int mid = length / 2;
+  size_t length = my_strlen(str) - 1;
+  size_t mid = length / 2;
 
-  for (int i = 0; i != mid; ++i) {
+  for (size_t i = 0; i != mid; ++i) {
     my_swap(&str[i], &str[length]);
     --length;
   }

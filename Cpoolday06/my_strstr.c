@@ -12,7 +12,7 @@ int my_strlen(char const *str)
 
 int check_str(char *str, char const *to_find, int pos)
 {
-  for (int i = 0; str[pos] != '\0' && to_find[i] != '\0'; ++pos) {
+  for (size_t i = 0; str[pos] != '\0' && to_find[i] != '\0'; ++pos) {
     if (str[pos] != to_find[i])
       return (-1);
     ++i;
@@ -24,7 +24,7 @@ int find_first_pos(char *str, char const *to_find)
 {
   int i = 0;
 
-  for (int first = 0; str[i] != '\0'; ++i)
+  for (size_t first = 0; str[i] != '\0'; ++i)
     if (to_find[first] == str[i])
       return (i);
   return (-1);
@@ -32,7 +32,7 @@ int find_first_pos(char *str, char const *to_find)
 
 char *move_pointer(char *str, int pos)
 {
-  int i = 0;
+  size_t i = 0;
 
   while (i < pos) {
     ++i;

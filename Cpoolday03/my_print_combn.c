@@ -6,14 +6,6 @@ void my_putchar(char c)
   write(1, &c, 1);
 }
 
-// void display_characters(int n)
-// {
-//     my_putchar((n + '0'));
-//     my_putchar(',');
-//     my_putchar(' ');
-// }
-
-
 void function(int n)
 {
   printf("%d\n", n);
