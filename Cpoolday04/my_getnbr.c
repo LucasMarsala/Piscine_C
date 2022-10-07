@@ -69,6 +69,7 @@ int my_getnbr(char const *str)
 
 int main(void)
 {
+  printf("Test = 1234 | Result should be 1234 = %d\n", my_getnbr("1234"));
   printf("Test = 42a43 | Result should be 42 = %d\n", my_getnbr("42a43"));
   printf("Test = 10 | Result should be 10 = %d\n", my_getnbr("10"));
   printf("Test = -10 | Result should be -10 = %d\n", my_getnbr("-10"));

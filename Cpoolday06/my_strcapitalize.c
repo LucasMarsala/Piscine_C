@@ -18,12 +18,11 @@ char *my_strcapitalize(char *str)
   for (size_t i = 0; str[i] != '\0'; ++i) {
     if ((str[i] >= 'a' && str[i] <= 'z') && check == 0) {
       str[i] = str[i] - 32;
-      check++;
-    } else if (!(str[i] >= 'a' && str[i] <= 'z') && check > 0) {
-      --check;
-    }
-    // else if (check == -1 && !((str[i] >= 'a' && str[i] <= 'z') && (str[i] >= '0' && str[i] <= '9')))
-    //   check = -1;
+      check = 1;
+    } else if (str[i] >= '0' && str[i] <= '9')
+      check = 1;
+    else if (!(str[i] >= 'a' && str[i] <= 'z') && check > 0)
+      check = 0;
   }
   return (str);
 }
