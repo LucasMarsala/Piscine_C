@@ -56,7 +56,7 @@ int my_getnbr(char const *str)
   else
     for (int i = 0; i != max; ++i) {
       value += str[pos] - '0';
-      if (value == 2147483647 || value == -2147483648 && check_is_neg(str) != 0)
+      if ((value == 2147483647 || value == -2147483648) && check_is_neg(str) != 0)
         return (value);
       value *= 10;
       ++pos;
