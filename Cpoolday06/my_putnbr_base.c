@@ -95,15 +95,21 @@ void my_revputstr(char const *str)
 
 void display_to_binary(int nbr)
 {
+  int check = 0;
   size_t i = 0;
   int len = calculate_length_int(nbr);
   char str[len + 1];
 
+  if (nbr < 0) {
+    check = 1;
+    nbr *= -1;
+  }
   for (; nbr != 0; nbr /= 2) {
     str[i] = ((nbr % 2) + '0');
     ++i;
   }
   str[i] = '\0';
+  (check = 0) ? (check = 0) : my_putchar('-');
   my_revputstr(str);
   my_putchar('\n');
 }
@@ -131,6 +137,9 @@ void change_character(char *str, int nbr)
     case 14:
       *str = 'E';
       break;
+    case 15:
+      *str = 'F';
+      break;
     default:
       *str = ((nbr % 16) + '0');
   }
@@ -138,15 +147,21 @@ void change_character(char *str, int nbr)
 
 void display_to_hexa(int nbr)
 {
+  int check = 0;
   size_t i = 0;
   int len = calculate_length_int(nbr);
   char str[len + 1];
 
+  if (nbr < 0) {
+    check = 1;
+    nbr *= -1;
+  }
   for (; nbr != 0; nbr /= 16) {
     change_character(&str[i], nbr);
     ++i;
   }
   str[i] = '\0';
+  (check = 0) ? (check = 0) : my_putchar('-');
   my_revputstr(str);
   my_putchar('\n');
 }
@@ -177,5 +192,11 @@ int main(void)
   my_putnbr_base(10, "0123456789");
   printf("Result should be 5464E = \n");
   my_putnbr_base(345678, "0123456789ABCDEF");
+  printf("Result should be 1010 = \n");
+  my_putnbr_base(-389, "01");
+  printf("Result should be -110000101 = \n");
+  my_putnbr_base(-83173, "0123456789");
+  printf("Result should be -BF58 = \n");
+  my_putnbr_base(-48984, "0123456789ABCDEF");
   return (0);
 }
