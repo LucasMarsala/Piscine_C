@@ -1,3 +1,6 @@
 a.out
+main.c
 *.o
 *~
+*.a
+vgcore.*
