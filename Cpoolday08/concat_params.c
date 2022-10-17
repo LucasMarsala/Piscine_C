@@ -2,7 +2,6 @@
 #include <unistd.h>
 #include <stdio.h>
 
-// #define NULL ((void*)0)
 #define size_t unsigned short int
 
 void my_putchar(char c)
@@ -39,7 +38,9 @@ char *concat_params(int ac, char **av)
   size_t len = 0;
   char *str;
 
-  str = malloc(sizeof(char) * (size + ac));
+  ac == 1 ? size++ : size;
+  printf("%d\n", size);
+  str = malloc(sizeof(char) * (size + ac + 1));
   if (str == NULL)
     return (NULL);
   for (size_t l = 0; l < ac; ++l) {
@@ -58,6 +59,9 @@ char *concat_params(int ac, char **av)
 
 int main(int ac, char **av)
 {
-  my_putstr(concat_params(ac, av));
+  char *str = concat_params(ac, av);
+
+  my_putstr(str);
+  free(str);
   return (0);
 }

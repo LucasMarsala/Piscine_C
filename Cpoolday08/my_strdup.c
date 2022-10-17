@@ -11,16 +11,23 @@ int my_strlen(char const *str)
   return (i);
 }
 
-char *my_strdup(char const *src)
+char *my_strcpy(char *dest, char const *src)
 {
   size_t i = 0;
+
+  for (; src[i] != '\0'; ++i)
+    dest[i] = src[i];
+  dest[i] = '\0';
+  return (dest);
+}
+
+char *my_strdup(char const *src)
+{
   char *str = malloc(sizeof(char) * (my_strlen(src) + 1));
 
   if (str == NULL)
     return (NULL);
-  for (; src[i] != '\0'; ++i)
-    str[i] = src[i];
-  str[i] = '\0';
+  my_strcpy(str, src);
   return (str);
 }
 
