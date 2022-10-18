@@ -1,5 +1,5 @@
 SRC = ./my_compute_power_rec.c \
-      ./my_compute_power_square_root.c \
+      ./my_compute_square_root.c \
 			./my_find_prime_sup.c \
 			./my_getnbr.c \
 			./my_is_prime.c \
@@ -10,7 +10,7 @@ SRC = ./my_compute_power_rec.c \
 			./my_revstr.c \
 			./my_showmem.c \
 			./my_showstr.c \
-			./my_sort_int_array.c \
+			./my_sort_int_array.c \
 			./my_str_isalpha.c \
 			./my_str_islower.c \
 			./my_str_isnum.c \
@@ -31,12 +31,30 @@ SRC = ./my_compute_power_rec.c \
 
 OBJ = $(SRC:.c=.o)
 
-$(NAME): $(OBJ)
-	ar rc -o $(NAME) $(OBJ)
+NAME = libmy.a
 
-all:        $(NAME)
+MY_H = my.h
+
+LIB = ar rc
+
+COPY = cp
+
+PATH_INCLUDE = ../../include
+
+RENAME = -o
+
+RM = rm -f
+
+$(NAME): $(OBJ)
+	$(LIB) $(RENAME) $(NAME) $(OBJ)
+	$(COPY) $(MY_H) $(PATH_INCLUDE)
+
+all: $(NAME)
 
 clean:
-		rm -f $(OBJ)
+		$(RM) $(OBJ)
+
+fclean: clean
+			$(RM) $(NAME)
 
 .PHONY: all clean
